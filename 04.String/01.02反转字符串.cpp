@@ -1,26 +1,40 @@
+
+//库函数reverse
 class Solution {
  public:
-  string replaceSpace(string s) {
-    int count = 0;  // 统计空格的个数
-    int sOldSize = s.size();
-    for (int i = 0; i < s.size(); i++) {
-      if (s[i] == ' ') {
-        count++;
+  string reverseStr(string s, int k) {
+    for (int i = 0; i < s.size(); i += (2 * k)) {
+      // 1. 每隔 2k 个字符的前 k 个字符进行反转
+      // 2. 剩余字符小于 2k 但大于或等于 k 个，则反转前 k 个字符
+      if (i + k <= s.size()) {
+        reverse(s.begin() + i, s.begin() + i + k);
+        continue;
       }
+      // 3. 剩余字符少于 k 个，则将剩余字符全部反转。
+      reverse(s.begin() + i, s.begin() + s.size());
     }
-    // 扩充字符串s的大小，也就是每个空格替换成"%20"之后的大小
-    s.resize(s.size() + count * 2);
-    int sNewSize = s.size();
-    // 从后先前将空格替换为"%20"
-    for (int i = sNewSize - 1, j = sOldSize - 1; j < i; i--, j--) {
-      if (s[j] != ' ') {
-        s[i] = s[j];
-      } else {
-        s[i] = '0';
-        s[i - 1] = '2';
-        s[i - 2] = '%';
-        i -= 2;
+    return s;
+  }
+};
+
+//左闭右闭
+
+class Solution {
+ public:
+  void reverse(string &s, int start, int end) {
+    for (int i = start, j = end; i < j; i++, j--) {
+      swap(s[i], s[j]);
+    }
+  }
+  string reverseStr(string s, int k) {
+    for (int i = 0; i < s.size(); i += (2 * k)) {
+      // 1. 每隔 2k 个字符的前 k 个字符进行反转
+      // 2. 剩余字符小于 2k 但大于或等于 k 个，则反转前 k 个字符
+      if (i + k <= s.size()) {
+        reverse(s, i, i + k - 1);
+        continue;
       }
+      reverse(s, i, s.size() - 1);
     }
     return s;
   }

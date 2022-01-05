@@ -8,7 +8,8 @@ class Solution {
       swap(s[i], s[j]);
     }
   }
-}
+};
+
 // swap常用的两种实现
 
 //数值交换
