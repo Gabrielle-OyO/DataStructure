@@ -21,7 +21,7 @@ void BFS(Graph G, int v) {  //从顶v出发广度优先遍历图
     for (w = FirstNeighbor(G, v); w >= 0; w = NextNeighbor(G, v, w))
       if (!visited[w]) {  // w为v的未访问的邻接顶点
         visit(w);
-        visited[w] = TURE;  //对w做已访问标记
+        visited[w] = TRUE;  //对w做已访问标记
         EnQueue(Q, w)       //顶点w入队列
       }
   }
