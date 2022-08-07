@@ -1,8 +1,11 @@
 
 
+//单源最短路径（常考）
 void BFS_Distance(Graph G, int u) {
-  for (i = 0; i < G.vexnum; ++i)  //初始化路径长度
-    d[i] =∞;
+  for (i = 0; i < G.vexnum; ++i) {
+    d[i] =∞;       //初始化最短路径长度
+    path[i] = -1;  //最短路径从哪个顶点过来
+  }
   visited[u] = TRUE;
   d[u] = 0;
   EnQUeue(Q, u);
