@@ -11,7 +11,7 @@ void FindPath(AGraph *G, int u, int v, int path[], int d) {
   p = G->adjlist[u].firstarc;  // p指向u的第一个相邻点
   while (p != NULL) {
     w = p->adjvex;
-    if (visited[w] == 0)  //若顶点未访问 递归访问它
+    if (visited[w] == 0)  //若顶点 b未访问 递归访问它
       FindPath(G, w, V, path, d);
     p = p->nextarc;
   }
